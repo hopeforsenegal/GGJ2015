@@ -20,12 +20,10 @@ public class JumpPlatform : MonoBehaviour {
         if (isSticky)
         {
             coll.gameObject.SendMessage("ApplyStickyJump");
-            print("ApplyStickyJump");
         }
         else
         {
             coll.gameObject.SendMessage("ApplySpringyJump");
-            print("ApplySpringyJump");
         }
     }
 
@@ -33,6 +31,5 @@ public class JumpPlatform : MonoBehaviour {
     void OnCollisionExit2D(Collision2D coll)
     {
         coll.gameObject.SendMessage("ApplyNormalJump");
-        print("ApplyNormalJump");
     }
 }
