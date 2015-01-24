@@ -12,21 +12,23 @@ public class JumpPlatform : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ChangeState();
+        }
 	}
+
+    void ChangeState()
+    {
+        isSticky = !isSticky;
+    }
 
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (isSticky)
-        {
-            coll.gameObject.SendMessage("ApplyStickyJump");
-        }
-        else
-        {
-            coll.gameObject.SendMessage("ApplySpringyJump");
-        }
+        coll.gameObject.SendMessage(isSticky ? "ApplyStickyJump" : "ApplySpringyJump");
     }
-
 
     void OnCollisionExit2D(Collision2D coll)
     {

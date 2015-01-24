@@ -12,19 +12,33 @@ public class PhaseWall : MonoBehaviour{
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ChangeState();
+        }
 	}
 
-    void OnTriggerEnter2D(Collider2D other)
+    void ChangeState()
     {
+        SpriteRenderer current = GetComponent<SpriteRenderer>();
+
         if (isSlow)
         {
-            other.gameObject.SendMessage("ApplySlowMovement");
+            current.color = new Color(Color.blue.r, Color.blue.g, Color.blue.b, current.color.a);
         }
         else
         {
-            other.gameObject.SendMessage("ApplyFastMovement");
+            current.color = new Color(Color.green.r, Color.green.g, Color.green.b, current.color.a);
         }
+
+        isSlow = !isSlow;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        other.gameObject.SendMessage(isSlow ? "ApplySlowMovement" : "ApplyFastMovement");
     }
 
     void OnTriggerExit2D(Collider2D other)

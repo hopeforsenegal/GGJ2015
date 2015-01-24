@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb08e179f8df73c41bd4ccb4dd1a2409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isSlow: 1
+  isSlow: 0
 --- !u!61 &567813606
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,8 +215,8 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 602796c811c11fc41b8034284c70ef6c, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d3c12bdcaf7929d499309f9d7b4ceb42, type: 3}
+  m_Color: {r: 0, g: 0, b: 1, a: .752941191}
 --- !u!4 &567813608
 Transform:
   m_ObjectHideFlags: 0
@@ -605,6 +605,27 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21200000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 21200000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d3c12bdcaf7929d499309f9d7b4ceb42,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd78b2c6d5c2b824aada911982d85eba, type: 2}
   m_RootGameObject: {fileID: 567813604}
