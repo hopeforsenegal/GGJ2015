@@ -28,19 +28,23 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	public void RotateLeft(int sides) {
-		Time.timeScale = 0;
-		this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-			Time.timeScale = 1;
-		});
+		if (!this.rotationAngle.IsTransitioning) {
+			Time.timeScale = 0;
+			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
+				Time.timeScale = 1;
+			});
 
-		rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
+			rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
+		}
 	}
 	public void RotateRight(int sides) {
-		Time.timeScale = 0;
-		this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-			Time.timeScale = 1;
-		});
+		if (!this.rotationAngle.IsTransitioning) {
+			Time.timeScale = 0;
+			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
+				Time.timeScale = 1;
+			});
 
-		rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
+			rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
+		}
 	}
 }
