@@ -130,6 +130,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -154,8 +155,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 12
   moveAcceleration: 130
+  moveDeadzone: 0
   deceleration: 30
   jumpStrength: 30
+  stickyJumpStrengthRatio: .800000012
+  springyJumpStrengthRatio: 1.20000005
+  slowMoveSpeedRatio: .600000024
+  fastMoveSpeedRatio: 1.5
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
