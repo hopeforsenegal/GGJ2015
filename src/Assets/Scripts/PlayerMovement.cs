@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
 		// jump if necessary
 		float yVel = rigidbody2D.velocity.y;
 		if (jumped) {
-            yVel += amplifyJumpStrength * jumpStrength;
+            yVel += amplifyMoveSpeed * amplifyJumpStrength * jumpStrength;
 		}
 
 		// update velocity
