@@ -6,25 +6,31 @@ public class PlayerMovement : MonoBehaviour {
 	public float maxMoveSpeed;
 	public float moveAcceleration;
 	public float deceleration;
-	public float jumpStrength;
+    public float jumpStrength;
 
 	public bool isGrounded {
 		get {
             // Look down our height for the platform layer
-            Collider2D hit = Physics2D.OverlapCircle((Vector2)collider2D.bounds.center - new Vector2(0, collider2D.bounds.extents.y), 0.05f, 1 << LayerMask.NameToLayer("Platform"));
+            Collider2D hit = Physics2D.OverlapCircle((Vector2)collider2D.bounds.center - new Vector2(0, collider2D.bounds.extents.y), 0.30f, 1 << LayerMask.NameToLayer("Platform"));
             return hit != null;
 		}
 	}
 
 	private float currentMoveSpeed;
 	private bool moved;
-	private bool jumped;
+    private bool jumped;
+    private float amplifyJumpStrength;
+
+    void Start()
+    {
+        ApplyNormalJump();
+    }
 
 	void Update( ) {
 		// jump if necessary
 		float yVel = rigidbody2D.velocity.y;
 		if (jumped) {
-			yVel += jumpStrength;
+            yVel += amplifyJumpStrength * jumpStrength;
 		}
 
 		// update velocity
@@ -41,6 +47,20 @@ public class PlayerMovement : MonoBehaviour {
 		jumped = false;
 	}
 
+    void ApplyStickyJump()
+    {
+        amplifyJumpStrength = 0.8f;
+    }
+
+    void ApplySpringyJump()
+    {
+        amplifyJumpStrength = 1.2f;
+    }
+    void ApplyNormalJump()
+    {
+        amplifyJumpStrength = 1.0f;
+    }
+
 	public void MoveLeft( ) {
 		moved = true;
 		currentMoveSpeed -= moveAcceleration * Time.deltaTime;
@@ -54,7 +74,8 @@ public class PlayerMovement : MonoBehaviour {
 	public void Jump( ) {
 		// Can only jump if grounded
 		if(isGrounded){
-			jumped = true;
+            jumped = true;
+            print("Jump");
 		}
 	}
 }
