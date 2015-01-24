@@ -8,6 +8,10 @@ public class PlayerMovement : MonoBehaviour {
 	public float moveDeadzone;
 	public float deceleration;
     public float jumpStrength;
+    public float stickyJumpStrengthRatio;
+    public float springyJumpStrengthRatio;
+    public float slowMoveSpeedRatio;
+    public float fastMoveSpeedRatio;
 
 	public bool isGrounded {
 		get {
@@ -17,11 +21,11 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
-	private float currentMoveSpeed;
 	private bool moved;
     private bool jumped;
-    private float amplifyJumpStrength;
-    private float amplifyMoveSpeed;
+	private float currentMoveSpeed;
+    private float currentAmplifyJumpStrength;
+    private float currentAmplifyMoveSpeed;
 
     void Start()
     {
@@ -33,7 +37,7 @@ public class PlayerMovement : MonoBehaviour {
 		// jump if necessary
 		float yVel = rigidbody2D.velocity.y;
 		if (jumped) {
-            yVel += amplifyMoveSpeed * amplifyJumpStrength * jumpStrength;
+            yVel += currentAmplifyMoveSpeed * currentAmplifyJumpStrength * jumpStrength;
 		}
 
 		// update velocity
@@ -54,43 +58,43 @@ public class PlayerMovement : MonoBehaviour {
 
     void ApplyStickyJump()
     {
-        amplifyJumpStrength = 0.8f;
+        currentAmplifyJumpStrength = stickyJumpStrengthRatio;
     }
 
     void ApplySpringyJump()
     {
-        amplifyJumpStrength = 1.2f;
+        currentAmplifyJumpStrength = springyJumpStrengthRatio;
     }
 
     void ApplyNormalJump()
     {
-        amplifyJumpStrength = 1.0f;
+        currentAmplifyJumpStrength = 1.0f;
     }
 
     void ApplySlowMovement()
     {
-        amplifyMoveSpeed = 0.6f;
+        currentAmplifyMoveSpeed = slowMoveSpeedRatio;
     }
 
     void ApplyFastMovement()
     {
-        amplifyMoveSpeed = 1.5f;
+        currentAmplifyMoveSpeed = fastMoveSpeedRatio;
     }
 
     void ApplyNormalMovement()
     {
-        amplifyMoveSpeed = 1.0f;
+        currentAmplifyMoveSpeed = 1.0f;
     }
 
 	public void MoveLeft( ) {
 		moved = true;
 		currentMoveSpeed -= moveAcceleration * Time.deltaTime;
-        currentMoveSpeed = amplifyMoveSpeed * Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
+        currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
 	}
 	public void MoveRight( ) {
 		moved = true;
 		currentMoveSpeed += moveAcceleration * Time.deltaTime;
-        currentMoveSpeed = amplifyMoveSpeed * Mathf.Min(maxMoveSpeed, currentMoveSpeed);
+        currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Min(maxMoveSpeed, currentMoveSpeed);
 	}
 	public void Jump( ) {
 		// Can only jump if grounded

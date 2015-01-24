@@ -144,7 +144,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
+      propertyPath: stickyJumpStrength
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
+      propertyPath: springyJumpStrength
+      value: 1.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
+      propertyPath: slowMoveSpeed
+      value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
+      propertyPath: fastMoveSpeed
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
@@ -721,6 +737,10 @@ MonoBehaviour:
   moveDeadzone: 0
   deceleration: 30
   jumpStrength: 30
+  stickyJumpStrengthRatio: .800000012
+  springyJumpStrengthRatio: 1.20000005
+  slowMoveSpeedRatio: .600000024
+  fastMoveSpeedRatio: 1.5
 --- !u!114 &1746536961
 MonoBehaviour:
   m_ObjectHideFlags: 0
