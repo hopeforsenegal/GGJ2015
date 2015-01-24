@@ -5,6 +5,7 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour {
 	public float maxMoveSpeed;
 	public float moveAcceleration;
+	public float moveDeadzone;
 	public float deceleration;
 	public float jumpStrength;
 
@@ -30,7 +31,9 @@ public class PlayerMovement : MonoBehaviour {
 		// update velocity
 		rigidbody2D.velocity = new Vector2(currentMoveSpeed, yVel);
 		if (!moved) {
-			if (currentMoveSpeed < 0) {
+			if (Mathf.Abs(currentMoveSpeed) < moveDeadzone) {
+				currentMoveSpeed = 0;
+			} else if (currentMoveSpeed < 0) {
 				currentMoveSpeed += deceleration * Time.deltaTime;
 			} else {
 				currentMoveSpeed -= deceleration * Time.deltaTime;
