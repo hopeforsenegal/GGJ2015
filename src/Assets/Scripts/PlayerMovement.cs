@@ -21,10 +21,12 @@ public class PlayerMovement : MonoBehaviour {
 	private bool moved;
     private bool jumped;
     private float amplifyJumpStrength;
+    private float amplifyMoveSpeed;
 
     void Start()
     {
         ApplyNormalJump();
+        ApplyNormalMovement();
     }
 
 	void Update( ) {
@@ -59,20 +61,36 @@ public class PlayerMovement : MonoBehaviour {
     {
         amplifyJumpStrength = 1.2f;
     }
+
     void ApplyNormalJump()
     {
         amplifyJumpStrength = 1.0f;
     }
 
+    void ApplySlowMovement()
+    {
+        amplifyMoveSpeed = 0.6f;
+    }
+
+    void ApplyFastMovement()
+    {
+        amplifyMoveSpeed = 1.5f;
+    }
+
+    void ApplyNormalMovement()
+    {
+        amplifyMoveSpeed = 1.0f;
+    }
+
 	public void MoveLeft( ) {
 		moved = true;
 		currentMoveSpeed -= moveAcceleration * Time.deltaTime;
-		currentMoveSpeed = Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
+        currentMoveSpeed = amplifyMoveSpeed * Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
 	}
 	public void MoveRight( ) {
 		moved = true;
 		currentMoveSpeed += moveAcceleration * Time.deltaTime;
-		currentMoveSpeed = Mathf.Min(maxMoveSpeed, currentMoveSpeed);
+        currentMoveSpeed = amplifyMoveSpeed * Mathf.Min(maxMoveSpeed, currentMoveSpeed);
 	}
 	public void Jump( ) {
 		// Can only jump if grounded
