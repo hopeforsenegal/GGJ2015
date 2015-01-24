@@ -2,19 +2,25 @@
 using System.Collections;
 
 [RequireComponent(typeof(Future))]
-[RequireComponent(typeof(TransitionTransform))]
 public class LevelRotation : MonoBehaviour {
 
 	public float rotationDuration;
-	private Quaternion leftTurn = Quaternion.FromToRotation(Vector3.right, Vector3.up);
-	private Quaternion rightTurn = Quaternion.FromToRotation(Vector3.up, Vector3.right);
+	private float leftTurn = 90;
+	private float rightTurn = 90;
+
+	private TransitionFloat rotationAngle;
 
 	// Use this for initialization
-	void Start () {
-		this.GetComponent<TransitionTransform>().ConfigRotation(rotationDuration, TransitionFloat.EASE_IN_OUT);
+	void Awake( ) {
+		this.rotationAngle = new TransitionFloat(0, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
 
 	void Update( ) {
+		rotationAngle.Update();
+		if (this.rotationAngle.IsTransitioning) {
+			transform.rotation = Quaternion.Euler(0, 0, rotationAngle.CurrentValue);
+		}
+
 		//DEBUG
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			this.RotateLeft(1);
@@ -27,11 +33,7 @@ public class LevelRotation : MonoBehaviour {
 			Time.timeScale = 1;
 		});
 
-		Quaternion newRotation = Quaternion.Euler(this.GetComponent<TransitionTransform>().rotation);
-		for (int i = 0; i < sides; i++) {
-			newRotation *= leftTurn;
-		}
-		this.GetComponent<TransitionTransform>().rotation = newRotation.eulerAngles;
+		rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
 	}
 	public void RotateRight(int sides) {
 		Time.timeScale = 0;
@@ -39,10 +41,6 @@ public class LevelRotation : MonoBehaviour {
 			Time.timeScale = 1;
 		});
 
-		Quaternion newRotation = Quaternion.Euler(this.GetComponent<TransitionTransform>().rotation);
-		for (int i = 0; i < sides; i++) {
-			newRotation *= rightTurn;
-		}
-		this.GetComponent<TransitionTransform>().rotation = newRotation.eulerAngles;
+		rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
 	}
 }
