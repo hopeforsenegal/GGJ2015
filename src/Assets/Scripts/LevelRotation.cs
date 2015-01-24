@@ -44,7 +44,7 @@ public class LevelRotation : MonoBehaviour {
 				Time.timeScale = 1;
 			});
 
-			rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
+            rotationAngle.GoTo(transform.rotation.eulerAngles.z + rightTurn * sides);
 		}
 	}
 }
