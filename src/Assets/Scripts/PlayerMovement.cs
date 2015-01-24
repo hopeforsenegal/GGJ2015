@@ -78,7 +78,6 @@ public class PlayerMovement : MonoBehaviour {
 		// Can only jump if grounded
 		if(isGrounded){
             jumped = true;
-            print("Jump");
 		}
 	}
 }
