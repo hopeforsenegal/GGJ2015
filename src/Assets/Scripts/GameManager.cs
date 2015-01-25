@@ -43,9 +43,9 @@ public class GameManager : MonoBehaviour {
 		if (Time.time > nextRotationTime) {
 			nextRotationTime = Time.time + Random.value * (maxRotationInterval - minRotationInterval) + minRotationInterval;
 			if (Random.value < 0.5) {
-				FindObjectOfType<LevelRotation>().RotateLeft(Random.Range(1, 4));
+				FindObjectOfType<LevelRotation>().RotateLeft(Random.Range(1, 3));
 			} else {
-				FindObjectOfType<LevelRotation>().RotateRight(Random.Range(1, 4));
+				FindObjectOfType<LevelRotation>().RotateRight(Random.Range(1, 3));
 			}
 		}
 	}
