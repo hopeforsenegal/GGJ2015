@@ -29,9 +29,12 @@ public class GameManager : MonoBehaviour {
 	public float maxRotationInterval = 20;
 	private float nextRotationTime;
     private int previousSpawnLocation = int.MaxValue;
+    private GameObject[] orbSpawns;
 
 	// Use this for initialization
-	void Start () {
+    void Start()
+    {
+        orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
 		spawnOrb();
 		nextRotationTime = Time.time + Random.value * (maxRotationInterval - minRotationInterval) + minRotationInterval;
 	}
@@ -77,7 +80,6 @@ public class GameManager : MonoBehaviour {
     {
         this.GetComponent<Future>().schedule(2.0f, delegate()
         {
-            GameObject[] orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
             int currentSpawnLocation = Random.Range(0, orbSpawns.Length);
 
             while (currentSpawnLocation == previousSpawnLocation) 
