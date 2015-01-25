@@ -43,6 +43,9 @@ MonoBehaviour:
   orbPrefab: {fileID: 400000, guid: fbc0502dac95dc24c8e2863c61a04745, type: 2}
   scorePrefab: {fileID: 13200000, guid: 13adb189c89141046b357b458fdad824, type: 2}
   currentOrb: {fileID: 0}
+  sceneToLoad: credits
+  minRotationInterval: 5
+  maxRotationInterval: 20
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

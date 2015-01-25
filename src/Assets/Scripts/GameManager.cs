@@ -20,7 +20,8 @@ public class GameManager : MonoBehaviour {
 	public GridSnap grid;
 	public Transform orbPrefab;
 	public GUIText scorePrefab;
-	public Transform currentOrb;
+    public Transform currentOrb;
+    public string sceneToLoad;
 	private float scoreSpacing = 0.1f;
 	private Dictionary<PlayerController, int> playerScores = new Dictionary<PlayerController,int>();
 	private Dictionary<PlayerController, GUIText> scoreBoard = new Dictionary<PlayerController, GUIText>();
@@ -53,7 +54,23 @@ public class GameManager : MonoBehaviour {
 				FindObjectOfType<LevelRotation>().RotateRight(Random.Range(1, 3));
 			}
 		}
+
+        if (Input.GetButton("Cancel") && !string.IsNullOrEmpty(sceneToLoad))
+        {
+            foreach (PlayerController playerController in playerScores.Keys)
+            {
+                PlayerPrefs.SetInt(playerController.tag, playerScores[playerController]);
+            }
+
+            print("Load Scene: " + sceneToLoad);
+            Application.LoadLevel(sceneToLoad); 
+        }
 	}
+
+    public Dictionary<PlayerController, int> GetScores()
+    {
+        return playerScores;
+    }
 
 	public void ReportScore(PlayerController playerController) {
 		if (playerScores.ContainsKey(playerController)) {
