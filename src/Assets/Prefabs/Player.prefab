@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 12
   moveAcceleration: 130
-  moveDeadzone: 0
+  moveDeadzone: .699999988
   deceleration: 30
   jumpStrength: 30
   stickyJumpStrengthRatio: .800000012
