@@ -56,6 +56,21 @@ public class PlayerMovement : MonoBehaviour {
 				currentMoveSpeed -= deceleration * Time.deltaTime;
 			}
 		}
+
+        if (!isGrounded && rigidbody2D.velocity.y > 0)
+        {
+            foreach (DirectionalPlatform platforms in GameObject.FindObjectsOfType<DirectionalPlatform>())
+            {
+                if (collider2D.bounds.center.y < platforms.collider2D.bounds.center.y + 1.0f)
+                {
+                    platforms.BelowState();
+                }
+                else
+                {
+                    platforms.AboveState();
+                }
+            }
+        }
 		
 		moved = false;
         jumped = false;

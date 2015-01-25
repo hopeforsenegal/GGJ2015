@@ -112,7 +112,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.54798412
+      value: 1.60000002
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -390,7 +390,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.80999994
+      value: 7.36000013
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_LocalPosition.y
@@ -581,6 +581,7 @@ GameObject:
   - 114: {fileID: 1279087503}
   - 114: {fileID: 1279087502}
   - 114: {fileID: 1279087501}
+  - 114: {fileID: 1279087506}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerTwo
@@ -595,7 +596,7 @@ Transform:
   m_PrefabInternal: {fileID: 1074327858}
   m_GameObject: {fileID: 1279087499}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.80999994, y: 4.61999989, z: 0}
+  m_LocalPosition: {x: 7.36000013, y: 4.61999989, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1428640597}
@@ -639,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 12
   moveAcceleration: 130
-  moveDeadzone: 0
+  moveDeadzone: .699999988
   deceleration: 30
   jumpStrength: 30
   stickyJumpStrengthRatio: .800000012
@@ -672,8 +673,20 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1.70000005}
+  m_Center: {x: .100000001, y: -.150000006}
+--- !u!114 &1279087506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11457748, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1074327858}
+  m_GameObject: {fileID: 1279087499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129c61d4344d5e4c8540ec1c04c99b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1428640596
 GameObject:
   m_ObjectHideFlags: 0
@@ -759,6 +772,7 @@ GameObject:
   - 114: {fileID: 1746536960}
   - 114: {fileID: 1746536959}
   - 114: {fileID: 1746536961}
+  - 114: {fileID: 1746536962}
   m_Layer: 0
   m_Name: Player
   m_TagString: PlayerOne
@@ -773,7 +787,7 @@ Transform:
   m_PrefabInternal: {fileID: 553178785}
   m_GameObject: {fileID: 1746536955}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.54798412, y: 4.55794764, z: 0}
+  m_LocalPosition: {x: 1.60000002, y: 4.55794764, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1184120794}
@@ -805,8 +819,8 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 2}
-  m_Center: {x: 0, y: 0}
+  m_Size: {x: 1, y: 1.70000005}
+  m_Center: {x: .100000001, y: -.150000006}
 --- !u!114 &1746536959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -833,7 +847,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxMoveSpeed: 12
   moveAcceleration: 130
-  moveDeadzone: 0
+  moveDeadzone: .699999988
   deceleration: 30
   jumpStrength: 30
   stickyJumpStrengthRatio: .800000012
@@ -850,6 +864,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8fd7d20cbfcc6aa44b0b3baf71200c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1746536962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11457748, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a,
+    type: 2}
+  m_PrefabInternal: {fileID: 553178785}
+  m_GameObject: {fileID: 1746536955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c129c61d4344d5e4c8540ec1c04c99b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2069085814

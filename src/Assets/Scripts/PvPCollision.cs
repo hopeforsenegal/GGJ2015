@@ -21,16 +21,4 @@ public class PvPCollision : MonoBehaviour {
     void PushedBack()
     {
     }
-
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        if (this.gameObject.tag.CompareTo("PlayerOne") == 0)
-        {
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        print("Exit!");
-    }
 }

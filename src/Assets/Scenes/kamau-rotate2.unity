@@ -903,10 +903,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
-      propertyPath: moveDeadzone
-      value: .699999988
-      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 18f03cd4a3c58904ea7d71d0ccc50f8a, type: 2}
       propertyPath: m_TagString
       value: PlayerOne
