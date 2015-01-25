@@ -1,6 +1,14 @@
 fileFormatVersion: 2
 guid: 4378ab8128571cd428f72324d33f7a6c
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: ruins_0
+    21300002: ruins_1
+    21300004: ruins_2
+    21300006: ruins_3
+    21300008: ruins_4
+    21300010: ruins_5
+    21300012: ruins_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -49,7 +57,7 @@ TextureImporter:
         y: 90
         width: 100
         height: 10
-      alignment: 0
+      alignment: 6
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_1
@@ -60,7 +68,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_2
       rect:
@@ -70,7 +78,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_3
       rect:
@@ -80,7 +88,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_4
       rect:
@@ -90,7 +98,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_5
       rect:
@@ -100,7 +108,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: ruins_6
       rect:
@@ -110,7 +118,7 @@ TextureImporter:
         width: 10
         height: 10
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

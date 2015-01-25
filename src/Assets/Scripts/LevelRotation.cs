@@ -37,6 +37,7 @@ public class LevelRotation : MonoBehaviour {
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
 				Time.timeScale = 1;
 				bindRotation(rotationAngle);
+                UpdateListeners();
 			});
 
 			rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
@@ -48,6 +49,7 @@ public class LevelRotation : MonoBehaviour {
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
 				Time.timeScale = 1;
 				bindRotation(rotationAngle);
+                UpdateListeners();
 			});
 
             rotationAngle.GoTo(transform.rotation.eulerAngles.z + rightTurn * sides);
@@ -59,4 +61,11 @@ public class LevelRotation : MonoBehaviour {
 		rotationAngle = new TransitionFloat(Mathf.RoundToInt(rotation.CurrentValue) % 360, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
 
+    private void UpdateListeners()
+    {
+        foreach (DirectionalPlatform platform in GameObject.FindObjectsOfType<DirectionalPlatform>())
+        {
+            platform.RotateState();
+        }
+    }
 }
