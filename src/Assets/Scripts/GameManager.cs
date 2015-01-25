@@ -95,20 +95,22 @@ public class GameManager : MonoBehaviour {
 
     private void spawnOrb()
     {
-        this.GetComponent<Future>().schedule(2.0f, delegate()
-        {
-            int currentSpawnLocation = Random.Range(0, orbSpawns.Length);
+		int currentSpawnLocation = Random.Range(0, orbSpawns.Length);
 
-            while (currentSpawnLocation == previousSpawnLocation) 
-            {
-                if(currentSpawnLocation != previousSpawnLocation)
-                    break;
-                currentSpawnLocation = Random.Range(0, orbSpawns.Length);
-            }
+		while (currentSpawnLocation == previousSpawnLocation) {
+			if (currentSpawnLocation != previousSpawnLocation)
+				break;
+			currentSpawnLocation = Random.Range(0, orbSpawns.Length);
+		}
 
-            currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[currentSpawnLocation].transform.position, Quaternion.identity)).transform;
-            previousSpawnLocation = currentSpawnLocation;
-            currentOrb.parent = grid.transform;
-        });
+		currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[currentSpawnLocation].transform.position, Quaternion.identity)).transform;
+		previousSpawnLocation = currentSpawnLocation;
+		currentOrb.parent = grid.transform;
+
+		Time.timeScale = 0;
+		GameObject.FindObjectOfType<CameraController>().TransitionToBounds();
+		GetComponent<Future>().schedule(0.5f, delegate( ) {
+			Time.timeScale = 1;
+		});
 	}
 }
