@@ -12,10 +12,17 @@ public class LevelRotation : MonoBehaviour {
 	public float currentAngle;
 	public float targetAngle;
 
+    private DirectionalPlatform[] dplatforms;
+
 	// Use this for initialization
 	void Awake( ) {
 		this.rotationAngle = new TransitionFloat(0, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
+
+    void Start()
+    {
+        dplatforms = GameObject.FindObjectsOfType<DirectionalPlatform>();
+    }
 
 	void Update( ) {
 		currentAngle = rotationAngle.CurrentValue;
@@ -58,7 +65,7 @@ public class LevelRotation : MonoBehaviour {
 
     private void UpdateListeners()
     {
-        foreach (DirectionalPlatform platform in GameObject.FindObjectsOfType<DirectionalPlatform>())
+        foreach (DirectionalPlatform platform in dplatforms)
         {
             platform.RotateState();
         }
