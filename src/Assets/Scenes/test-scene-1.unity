@@ -84,6 +84,7 @@ GameObject:
   - 4: {fileID: 47111321}
   - 58: {fileID: 47111323}
   - 114: {fileID: 47111322}
+  - 114: {fileID: 47111324}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Untagged
@@ -130,6 +131,18 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: .5
   m_Center: {x: 0, y: 0}
+--- !u!114 &47111324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: fbc0502dac95dc24c8e2863c61a04745,
+    type: 2}
+  m_PrefabInternal: {fileID: 295211912}
+  m_GameObject: {fileID: 47111320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd7d20cbfcc6aa44b0b3baf71200c0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &47599108
 GameObject:
   m_ObjectHideFlags: 0
