@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("OneJump") && movement.isGrounded)
+            if (Input.GetButtonDown("OneJump"))
             {
                 movement.Jump();
             }
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("TwoJump") && movement.isGrounded)
+            if (Input.GetButtonDown("TwoJump"))
             {
                 movement.Jump();
             }
