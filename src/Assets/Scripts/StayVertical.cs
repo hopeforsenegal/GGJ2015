@@ -6,7 +6,7 @@ public class StayVertical : MonoBehaviour {
 		if (this.GetComponent<PlayerController>() != null) {
 			Transform spriteTransform = this.transform.Find("SpriteAnchor");
 			if (spriteTransform) {
-				this.transform.Find("SpriteAnchor").transform.rotation = Quaternion.identity;
+                spriteTransform.transform.rotation = Quaternion.identity;
 				this.rigidbody2D.rotation = 0;
 			}
 		} else {
