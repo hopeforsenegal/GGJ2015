@@ -29,8 +29,11 @@ public class PlayerMovement : MonoBehaviour {
     private float currentAmplifyJumpStrength;
     private float currentAmplifyMoveSpeed;
 
+    private DirectionalPlatform[] dplatforms;
+
     void Start()
     {
+        dplatforms = GameObject.FindObjectsOfType<DirectionalPlatform>();
         ApplyNormalJump();
         ApplyNormalMovement();
     }
@@ -56,6 +59,21 @@ public class PlayerMovement : MonoBehaviour {
 				currentMoveSpeed -= deceleration * Time.deltaTime;
 			}
 		}
+
+        if (!isGrounded && rigidbody2D.velocity.y > 0)
+        {
+            foreach (DirectionalPlatform platforms in dplatforms)
+            {
+                if (collider2D.bounds.center.y < platforms.collider2D.bounds.center.y + 1.0f)
+                {
+                    platforms.BelowState();
+                }
+                else
+                {
+                    platforms.AboveState();
+                }
+            }
+        }
 		
 		moved = false;
         jumped = false;
