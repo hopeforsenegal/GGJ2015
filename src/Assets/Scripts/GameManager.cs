@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	public float minRotationInterval = 5;
 	public float maxRotationInterval = 20;
 	private float nextRotationTime;
+    private int previousSpawnLocation = int.MaxValue;
 
 	// Use this for initialization
 	void Start () {
@@ -77,7 +78,17 @@ public class GameManager : MonoBehaviour {
         this.GetComponent<Future>().schedule(2.0f, delegate()
         {
             GameObject[] orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
-            currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[Random.Range(0, orbSpawns.Length)].transform.position, Quaternion.identity)).transform;
+            int currentSpawnLocation = Random.Range(0, orbSpawns.Length);
+
+            while (currentSpawnLocation == previousSpawnLocation) 
+            {
+                if(currentSpawnLocation != previousSpawnLocation)
+                    break;
+                currentSpawnLocation = Random.Range(0, orbSpawns.Length);
+            }
+
+            currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[currentSpawnLocation].transform.position, Quaternion.identity)).transform;
+            previousSpawnLocation = currentSpawnLocation;
             currentOrb.parent = grid.transform;
         });
 	}
