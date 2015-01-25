@@ -3455,7 +3455,7 @@ GameObject:
   - 114: {fileID: 47599114}
   - 114: {fileID: 47599115}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: PlayerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25876,7 +25876,7 @@ Animator:
   m_GameObject: {fileID: 377576735}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b4111e10808dd8438562660ab41326a, type: 2}
+  m_Controller: {fileID: 9100000, guid: e2f8cbf828fa7c04791131b3b394c7ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -57993,7 +57993,7 @@ GameObject:
   - 114: {fileID: 873915473}
   - 114: {fileID: 873915472}
   m_Layer: 9
-  m_Name: Player
+  m_Name: Player 1
   m_TagString: PlayerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60905,6 +60905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: febc2de172fd1bf4fbaaeeb43c8293b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockToBounds: 1
 --- !u!1 &919955858
 GameObject:
   m_ObjectHideFlags: 0
@@ -77422,7 +77423,7 @@ Animator:
   m_GameObject: {fileID: 1196958691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b4111e10808dd8438562660ab41326a, type: 2}
+  m_Controller: {fileID: 9100000, guid: e2f8cbf828fa7c04791131b3b394c7ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
