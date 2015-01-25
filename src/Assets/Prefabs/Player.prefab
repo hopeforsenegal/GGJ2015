@@ -154,13 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a00344b0387ca3409b8c25e90a974d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxMoveSpeed: 12
+  maxMoveSpeed: 20
   moveAcceleration: 130
   moveDeadzone: .699999988
-  deceleration: 30
-  jumpStrength: 30
+  deceleration: 85
+  jumpStrength: 39
   stickyJumpStrengthRatio: .800000012
-  springyJumpStrengthRatio: 1.20000005
+  springyJumpStrengthRatio: 2.4000001
   slowMoveSpeedRatio: .600000024
   fastMoveSpeedRatio: 1.5
 --- !u!114 &11400004
