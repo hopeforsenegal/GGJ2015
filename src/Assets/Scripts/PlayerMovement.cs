@@ -21,10 +21,19 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
+    public bool isDucking
+    {
+        get
+        {
+            return ducked;
+        }
+    }
+
 	private bool moved;
     private bool jumped;
     private bool ducked;
 	private bool hasDoubleJumped = false;
+    private bool jumpingDown;
 	private float currentMoveSpeed;
     private float currentAmplifyJumpStrength;
     private float currentAmplifyMoveSpeed;
@@ -66,11 +75,11 @@ public class PlayerMovement : MonoBehaviour {
             {
                 if (collider2D.bounds.center.y < platforms.collider2D.bounds.center.y + 1.0f)
                 {
-                    platforms.BelowState();
+                    Physics2D.IgnoreCollision(collider2D, platforms.collider2D);
                 }
                 else
                 {
-                    platforms.AboveState();
+                    Physics2D.IgnoreCollision(collider2D, platforms.collider2D, false);
                 }
             }
         }
@@ -78,6 +87,7 @@ public class PlayerMovement : MonoBehaviour {
 		moved = false;
         jumped = false;
         ducked = false;
+        jumpingDown = false;
 	}
 
     void ApplyStickyJump()
@@ -151,5 +161,21 @@ public class PlayerMovement : MonoBehaviour {
     public void Stand()
     {
         ducked = false;
+    }
+
+    public void JumpDown()
+    {
+        if (jumpingDown == false)
+        {
+            jumped = false;
+            jumpingDown = true;
+            foreach (DirectionalPlatform platforms in dplatforms)
+            {
+                if (collider2D.bounds.center.y > platforms.collider2D.bounds.center.y + 1.0f)
+                {
+                    Physics2D.IgnoreCollision(collider2D, platforms.collider2D);
+                }
+            }
+        }
     }
 }

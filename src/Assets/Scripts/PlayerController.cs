@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("OneJump"))
+            if (Input.GetButton("OneJump") && Input.GetButton("OneDuck") && movement.isGrounded)
             {
-                movement.Jump();
+                movement.JumpDown();
             }
             if (Input.GetButtonDown("OneDuck") && movement.isGrounded)
             {
@@ -42,6 +42,10 @@ public class PlayerController : MonoBehaviour
             {
                 movement.Stand();
                 this.transform.Find(SpritePath).transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            if (Input.GetButtonDown("OneJump") && !Input.GetButton("OneDuck") && !movement.isDucking)
+            {
+                movement.Jump();
             }
         }
         else if (movement.tag.CompareTo("PlayerTwo") == 0)
@@ -62,9 +66,9 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("TwoJump"))
+            if (Input.GetButton("TwoJump") && Input.GetButton("TwoDuck") && movement.isGrounded)
             {
-                movement.Jump();
+                movement.JumpDown();
             }
             if (Input.GetButtonDown("TwoDuck") && movement.isGrounded)
             {
@@ -75,6 +79,10 @@ public class PlayerController : MonoBehaviour
             {
                 movement.Stand();
                 this.transform.Find(SpritePath).transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
+            }
+            if (Input.GetButtonDown("TwoJump") && !Input.GetButton("TwoDuck") && !movement.isDucking)
+            {
+                movement.Jump();
             }
         }
     }
