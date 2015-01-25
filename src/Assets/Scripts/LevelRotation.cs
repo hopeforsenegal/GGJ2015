@@ -9,6 +9,7 @@ public class LevelRotation : MonoBehaviour {
 	private float rightTurn = 90;
 
 	private TransitionFloat rotationAngle;
+	public float rot;
 
 	// Use this for initialization
 	void Awake( ) {
@@ -16,9 +17,12 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update( ) {
+		rot = rotationAngle.CurrentValue;
 		rotationAngle.Update();
 		if (this.rotationAngle.IsTransitioning) {
 			transform.rotation = Quaternion.Euler(0, 0, rotationAngle.CurrentValue);
+		} else if (this.rotationAngle.Finished) {
+			rotationAngle = bindRotation(rotationAngle);
 		}
 
 		//DEBUG
@@ -27,11 +31,16 @@ public class LevelRotation : MonoBehaviour {
 		}
 	}
 
+	private TransitionFloat bindRotation(TransitionFloat rotation) {
+		return new TransitionFloat(Mathf.RoundToInt(rotation.CurrentValue) % 360, rotationDuration, TransitionFloat.EASE_IN_OUT);
+	}
+
 	public void RotateLeft(int sides) {
 		if (!this.rotationAngle.IsTransitioning) {
 			Time.timeScale = 0;
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-				Time.timeScale = 1;
+                Time.timeScale = 1;
+                UpdateListeners();
 			});
 
 			rotationAngle.GoTo(transform.rotation.eulerAngles.z + leftTurn * sides);
@@ -41,10 +50,19 @@ public class LevelRotation : MonoBehaviour {
 		if (!this.rotationAngle.IsTransitioning) {
 			Time.timeScale = 0;
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-				Time.timeScale = 1;
+                Time.timeScale = 1;
+                UpdateListeners();
 			});
 
             rotationAngle.GoTo(transform.rotation.eulerAngles.z + rightTurn * sides);
 		}
 	}
+
+    private void UpdateListeners()
+    {
+        foreach (DirectionalPlatform platform in GameObject.FindObjectsOfType<DirectionalPlatform>())
+        {
+            platform.RotateState();
+        }
+    }
 }
