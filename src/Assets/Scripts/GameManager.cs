@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour {
 	public Transform orbPrefab;
 	public GUIText scorePrefab;
 	private float scoreSpacing = 0.1f;
+	public Transform currentOrb;
 	private Dictionary<PlayerController, int> playerScores = new Dictionary<PlayerController,int>();
 	private Dictionary<PlayerController, GUIText> scoreBoard = new Dictionary<PlayerController, GUIText>();
 
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour {
 
 	private void spawnOrb( ) {
 		GameObject[] orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
-		((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[Random.Range(0, orbSpawns.Length)].transform.position, Quaternion.identity)).transform.parent = grid.transform;
+		currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[Random.Range(0, orbSpawns.Length)].transform.position, Quaternion.identity)).transform;
+		currentOrb.parent = grid.transform;
 	}
 }

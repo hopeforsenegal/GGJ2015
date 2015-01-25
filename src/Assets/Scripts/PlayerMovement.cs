@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool moved;
     private bool jumped;
     private bool ducked;
+	private bool hasDoubleJumped = false;
 	private float currentMoveSpeed;
     private float currentAmplifyJumpStrength;
     private float currentAmplifyMoveSpeed;
@@ -38,8 +39,11 @@ public class PlayerMovement : MonoBehaviour {
 		// jump if necessary
 		float yVel = rigidbody2D.velocity.y;
 		if (jumped) {
-            yVel += currentAmplifyMoveSpeed * currentAmplifyJumpStrength * jumpStrength;
+            yVel = currentAmplifyMoveSpeed * currentAmplifyJumpStrength * jumpStrength;
         }
+		if (isGrounded) {
+			hasDoubleJumped = false;
+		}
 
 		// update velocity
 		rigidbody2D.velocity = new Vector2(currentMoveSpeed, yVel);
@@ -111,6 +115,9 @@ public class PlayerMovement : MonoBehaviour {
 		// Can only jump if grounded
 		if(isGrounded){
             jumped = true;
+		} else if (!hasDoubleJumped) {
+			jumped = true;
+			hasDoubleJumped = true;
 		}
 	}
 
