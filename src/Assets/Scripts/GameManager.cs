@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	private float scoreSpacing = 0.1f;
 	private Dictionary<PlayerController, int> playerScores = new Dictionary<PlayerController,int>();
 	private Dictionary<PlayerController, GUIText> scoreBoard = new Dictionary<PlayerController, GUIText>();
+	public int winningScore = 5;
 
 	public float minRotationInterval = 5;
 	public float maxRotationInterval = 20;
@@ -55,7 +56,7 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 
-        if (Input.GetButton("Cancel") && !string.IsNullOrEmpty(sceneToLoad))
+        if (getCurrentWinner() != null || (Input.GetButton("Cancel") && !string.IsNullOrEmpty(sceneToLoad)))
         {
             foreach (PlayerController playerController in playerScores.Keys)
             {
@@ -112,5 +113,14 @@ public class GameManager : MonoBehaviour {
 		GetComponent<Future>().schedule(0.5f, delegate( ) {
 			Time.timeScale = 1;
 		});
+	}
+
+	private PlayerController getCurrentWinner( ) {
+		foreach (PlayerController playerController in playerScores.Keys) {
+			if (playerScores[playerController] >= winningScore) {
+				return playerController;
+			}
+		}
+		return null;
 	}
 }
