@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		foreach (PlayerController playerController in playerScores.Keys) {
-			scoreBoard[playerController].text = playerController.name + ": " + playerScores[playerController];
+			scoreBoard[playerController].text = playerController.tag + ": " + playerScores[playerController];
 		}
 
 		if (Time.time > nextRotationTime) {
