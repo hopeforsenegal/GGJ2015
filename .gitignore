@@ -4,3 +4,5 @@ src/UpgradeLog2.htm
 src/src-csharp.sln
 src/src.sln
 src/obj/
+*.csproj
+*.unityproj
