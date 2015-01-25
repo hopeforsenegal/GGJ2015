@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+[RequireComponent(typeof(Future))]
 public class GameManager : MonoBehaviour {
 
 	// Singleton
@@ -71,9 +72,13 @@ public class GameManager : MonoBehaviour {
 		spawnOrb();
 	}
 
-	private void spawnOrb( ) {
-		GameObject[] orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
-		currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[Random.Range(0, orbSpawns.Length)].transform.position, Quaternion.identity)).transform;
-		currentOrb.parent = grid.transform;
+    private void spawnOrb()
+    {
+        this.GetComponent<Future>().schedule(2.0f, delegate()
+        {
+            GameObject[] orbSpawns = GameObject.FindGameObjectsWithTag("Orb Spawn");
+            currentOrb = ((GameObject)GameObject.Instantiate(orbPrefab.gameObject, orbSpawns[Random.Range(0, orbSpawns.Length)].transform.position, Quaternion.identity)).transform;
+            currentOrb.parent = grid.transform;
+        });
 	}
 }
