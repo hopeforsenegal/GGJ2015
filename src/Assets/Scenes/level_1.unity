@@ -62743,6 +62743,33 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3b0803b7c0cf9ac4d84ac21a387899db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: .525490224}
+--- !u!1 &1030177232
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1030177233}
+  m_Layer: 0
+  m_Name: Orb Spawn
+  m_TagString: Orb Spawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1030177233
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1030177232}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 68, y: -16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950518898}
+  m_RootOrder: 8
 --- !u!1 &1030716408
 GameObject:
   m_ObjectHideFlags: 0
@@ -96662,6 +96689,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1950518898}
   m_RootOrder: 1
+--- !u!1 &1585605489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1585605490}
+  m_Layer: 0
+  m_Name: Orb Spawn
+  m_TagString: Orb Spawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1585605490
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1585605489}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -68, y: 16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950518898}
+  m_RootOrder: 6
 --- !u!1 &1586320126
 GameObject:
   m_ObjectHideFlags: 0
@@ -97623,6 +97677,33 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a2598371935bdcb41b31216a818c61a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: .458823532}
+--- !u!1 &1596419198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1596419199}
+  m_Layer: 0
+  m_Name: Orb Spawn
+  m_TagString: Orb Spawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1596419199
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1596419198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -68, y: -16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950518898}
+  m_RootOrder: 5
 --- !u!1 &1597327056
 GameObject:
   m_ObjectHideFlags: 0
@@ -119184,6 +119265,10 @@ Transform:
   - {fileID: 1947844027}
   - {fileID: 895797228}
   - {fileID: 1787227082}
+  - {fileID: 1596419199}
+  - {fileID: 1585605490}
+  - {fileID: 1952518498}
+  - {fileID: 1030177233}
   m_Father: {fileID: 1837358029}
   m_RootOrder: 0
 --- !u!1 &1951692297
@@ -119236,6 +119321,33 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a2598371935bdcb41b31216a818c61a8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: .458823532}
+--- !u!1 &1952518497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1952518498}
+  m_Layer: 0
+  m_Name: Orb Spawn
+  m_TagString: Orb Spawn
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1952518498
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1952518497}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 68, y: 16, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1950518898}
+  m_RootOrder: 7
 --- !u!1 &1952998997
 GameObject:
   m_ObjectHideFlags: 0
