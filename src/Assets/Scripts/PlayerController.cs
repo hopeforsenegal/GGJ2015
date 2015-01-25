@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
                 this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(-1, 1, 1);
             }
             if (Input.GetButton("OneRight"))
-            {
+            {Debug.Log("pressed");
                 this.GetComponent<PlayerMovement>().MoveRight();
                 this.GetComponentInChildren<Animator>().SetBool("Moving", true);
                 this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(1, 1, 1);
