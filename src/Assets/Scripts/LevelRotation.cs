@@ -9,6 +9,7 @@ public class LevelRotation : MonoBehaviour {
 	private float rightTurn = 90;
 
 	private TransitionFloat rotationAngle;
+	public float rot;
 
 	// Use this for initialization
 	void Awake( ) {
@@ -16,15 +17,22 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update( ) {
+		rot = rotationAngle.CurrentValue;
 		rotationAngle.Update();
 		if (this.rotationAngle.IsTransitioning) {
 			transform.rotation = Quaternion.Euler(0, 0, rotationAngle.CurrentValue);
+		} else if (this.rotationAngle.Finished) {
+			rotationAngle = bindRotation(rotationAngle);
 		}
 
 		//DEBUG
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			this.RotateLeft(1);
 		}
+	}
+
+	private TransitionFloat bindRotation(TransitionFloat rotation) {
+		return new TransitionFloat(Mathf.RoundToInt(rotation.CurrentValue) % 360, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
 
 	public void RotateLeft(int sides) {
