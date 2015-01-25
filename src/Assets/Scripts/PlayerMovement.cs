@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 
 	private bool moved;
     private bool jumped;
+    private bool ducked;
 	private float currentMoveSpeed;
     private float currentAmplifyJumpStrength;
     private float currentAmplifyMoveSpeed;
@@ -38,7 +39,7 @@ public class PlayerMovement : MonoBehaviour {
 		float yVel = rigidbody2D.velocity.y;
 		if (jumped) {
             yVel += currentAmplifyMoveSpeed * currentAmplifyJumpStrength * jumpStrength;
-		}
+        }
 
 		// update velocity
 		rigidbody2D.velocity = new Vector2(currentMoveSpeed, yVel);
@@ -53,7 +54,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 		
 		moved = false;
-		jumped = false;
+        jumped = false;
+        ducked = false;
 	}
 
     void ApplyStickyJump()
@@ -86,20 +88,43 @@ public class PlayerMovement : MonoBehaviour {
         currentAmplifyMoveSpeed = 1.0f;
     }
 
-	public void MoveLeft( ) {
-		moved = true;
-		currentMoveSpeed -= moveAcceleration * Time.deltaTime;
-        currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
+    public void MoveLeft()
+    {
+        if (!ducked)
+        {
+            moved = true;
+            currentMoveSpeed -= moveAcceleration * Time.deltaTime;
+            currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Max(-1 * maxMoveSpeed, currentMoveSpeed);
+        }
 	}
+
 	public void MoveRight( ) {
-		moved = true;
-		currentMoveSpeed += moveAcceleration * Time.deltaTime;
-        currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Min(maxMoveSpeed, currentMoveSpeed);
+        if (!ducked)
+        {
+            moved = true;
+            currentMoveSpeed += moveAcceleration * Time.deltaTime;
+            currentMoveSpeed = currentAmplifyMoveSpeed * Mathf.Min(maxMoveSpeed, currentMoveSpeed);
+        }
 	}
+
 	public void Jump( ) {
 		// Can only jump if grounded
 		if(isGrounded){
             jumped = true;
 		}
 	}
+
+    public void Duck()
+    {
+        // Can only duck if grounded
+        if (isGrounded)
+        {
+            ducked = true;
+        }
+    }
+
+    public void Stand()
+    {
+        ducked = false;
+    }
 }

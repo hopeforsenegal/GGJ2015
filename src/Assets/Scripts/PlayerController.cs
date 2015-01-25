@@ -2,54 +2,80 @@
 using System.Collections;
 
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerController : MonoBehaviour {
-	void Update( ) {
-
-        if (this.GetComponent<PlayerMovement>().tag.CompareTo("PlayerOne") == 0)
+public class PlayerController : MonoBehaviour
+{
+    void Update()
+    {
+        PlayerMovement movement = this.GetComponent<PlayerMovement>();
+        if (movement.tag.CompareTo("PlayerOne") == 0)
         {
             if (Input.GetButton("OneLeft"))
             {
-                this.GetComponent<PlayerMovement>().MoveLeft();
-                this.GetComponentInChildren<Animator>().SetBool("Moving", true);
-                this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(-1, 1, 1);
+                Animator animator = this.GetComponentInChildren<Animator>();
+                movement.MoveLeft();
+                animator.SetBool("Moving", true);
+                animator.transform.localScale = new Vector3(-1, 1, 1);
             }
             if (Input.GetButton("OneRight"))
             {
-                this.GetComponent<PlayerMovement>().MoveRight();
-                this.GetComponentInChildren<Animator>().SetBool("Moving", true);
-                this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(1, 1, 1);
+                Animator animator = this.GetComponentInChildren<Animator>();
+                movement.MoveRight();
+                animator.SetBool("Moving", true);
+                animator.transform.localScale = new Vector3(1, 1, 1);
             }
-            if ((!Input.GetButton("OneLeft") && !Input.GetButton("OneRight")) || !this.GetComponent<PlayerMovement>().isGrounded)
+            if ((!Input.GetButton("OneLeft") && !Input.GetButton("OneRight")) || !movement.isGrounded)
             {
                 this.GetComponentInChildren<Animator>().SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("OneJump"))
+            if (Input.GetButtonDown("OneJump") && movement.isGrounded)
             {
-                this.GetComponent<PlayerMovement>().Jump();
+                movement.Jump();
+            }
+            if (Input.GetButtonDown("OneDuck") && movement.isGrounded)
+            {
+                movement.Duck();
+                this.transform.Find("SpriteAnchor/Sprite").transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+            }
+            if (Input.GetButtonUp("OneDuck"))
+            {
+                movement.Stand();
+                this.transform.Find("SpriteAnchor/Sprite").transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
-        else if (this.GetComponent<PlayerMovement>().tag.CompareTo("PlayerTwo") == 0)
+        else if (movement.tag.CompareTo("PlayerTwo") == 0)
         {
             if (Input.GetButton("TwoLeft"))
             {
-                this.GetComponent<PlayerMovement>().MoveLeft();
-                this.GetComponentInChildren<Animator>().SetBool("Moving", true);
-                this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(-1, 1, 1);
+                Animator animator = this.GetComponentInChildren<Animator>();
+                movement.MoveLeft();
+                animator.SetBool("Moving", true);
+                animator.transform.localScale = new Vector3(-1, 1, 1);
             }
             if (Input.GetButton("TwoRight"))
             {
-                this.GetComponent<PlayerMovement>().MoveRight();
-                this.GetComponentInChildren<Animator>().SetBool("Moving", true);
-                this.GetComponentInChildren<Animator>().transform.localScale = new Vector3(1, 1, 1);
+                Animator animator = this.GetComponentInChildren<Animator>();
+                movement.MoveRight();
+                animator.SetBool("Moving", true);
+                animator.transform.localScale = new Vector3(1, 1, 1);
             }
-            if ((!Input.GetButton("TwoLeft") && !Input.GetButton("TwoRight")) || !this.GetComponent<PlayerMovement>().isGrounded)
+            if ((!Input.GetButton("TwoLeft") && !Input.GetButton("TwoRight")) || !movement.isGrounded)
             {
                 this.GetComponentInChildren<Animator>().SetBool("Moving", false);
             }
-            if (Input.GetButtonDown("TwoJump"))
+            if (Input.GetButtonDown("TwoJump") && movement.isGrounded)
             {
-                this.GetComponent<PlayerMovement>().Jump();
+                movement.Jump();
+            }
+            if (Input.GetButtonDown("TwoDuck") && movement.isGrounded)
+            {
+                movement.Duck();
+                this.transform.Find("SpriteAnchor/Sprite").transform.localScale = new Vector3(1.0f, 0.5f, 1.0f);
+            }
+            if (Input.GetButtonUp("TwoDuck"))
+            {
+                movement.Stand();
+                this.transform.Find("SpriteAnchor/Sprite").transform.localScale = new Vector3(1.0f, 1.0f, 1.0f);
             }
         }
-	}
+    }
 }
