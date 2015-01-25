@@ -1,6 +1,29 @@
 fileFormatVersion: 2
 guid: cefda3d75652723489ea1e7d1d6ed1b6
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: player-red-gold_0
+    21300002: player-red-gold_1
+    21300004: player-red-gold_2
+    21300006: player-red-gold_3
+    21300008: player-red-gold_4
+    21300010: player-red-gold_5
+    21300012: player-red-gold_6
+    21300014: player-red-gold_7
+    21300016: player-red-gold_8
+    21300018: player-red-gold_9
+    21300020: player-red-gold_10
+    21300022: player-red-gold_11
+    21300024: player-red-gold_12
+    21300026: player-red-gold_13
+    21300028: player-red-gold_14
+    21300030: player-red-gold_15
+    21300032: player-red-gold_16
+    21300034: player-red-gold_17
+    21300036: player-red-gold_18
+    21300038: player-red-gold_19
+    21300040: player-red-gold_20
+    21300042: player-red-gold_21
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
