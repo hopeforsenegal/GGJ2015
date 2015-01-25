@@ -24,11 +24,6 @@ public class LevelRotation : MonoBehaviour {
 		if (this.rotationAngle.IsTransitioning) {
 			transform.rotation = Quaternion.Euler(0, 0, rotationAngle.CurrentValue);
 		}
-
-		//DEBUG
-		if (Input.GetKeyDown(KeyCode.Return)) {
-			this.RotateLeft(1);
-		}
 	}
 
 	public void RotateLeft(int sides) {
