@@ -7,7 +7,7 @@ public class TraverseScreenScript : MonoBehaviour {
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(300, 400, 200, 50), "Click Here or Press Start"))
+        if (GUI.Button(new Rect(500, 450, 200, 50), "Click Here or Press Start"))
         {
             print("Load Scene: " + sceneToLoad);
             Application.LoadLevel(sceneToLoad); 

@@ -1,6 +1,15 @@
 fileFormatVersion: 2
 guid: daedac0c40591014691362bdaf69382b
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: crystal_0
+    21300002: crystal_1
+    21300004: crystal_2
+    21300006: crystal_3
+    21300008: crystal_4
+    21300010: crystal_5
+    21300012: crystal_6
+    21300014: crystal_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -36,7 +45,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 20
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
