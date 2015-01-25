@@ -9,7 +9,8 @@ public class LevelRotation : MonoBehaviour {
 	private float rightTurn = 90;
 
 	private TransitionFloat rotationAngle;
-	public float rot;
+	public float currentAngle;
+	public float targetAngle;
 
 	// Use this for initialization
 	void Awake( ) {
@@ -17,29 +18,20 @@ public class LevelRotation : MonoBehaviour {
 	}
 
 	void Update( ) {
-		rot = rotationAngle.CurrentValue;
+		currentAngle = rotationAngle.CurrentValue;
+		targetAngle = rotationAngle.DestinationValue;
 		rotationAngle.Update();
 		if (this.rotationAngle.IsTransitioning) {
 			transform.rotation = Quaternion.Euler(0, 0, rotationAngle.CurrentValue);
-		} else if (this.rotationAngle.Finished) {
-			rotationAngle = bindRotation(rotationAngle);
 		}
-
-		//DEBUG
-		if (Input.GetKeyDown(KeyCode.Return)) {
-			this.RotateLeft(1);
-		}
-	}
-
-	private TransitionFloat bindRotation(TransitionFloat rotation) {
-		return new TransitionFloat(Mathf.RoundToInt(rotation.CurrentValue) % 360, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
 
 	public void RotateLeft(int sides) {
 		if (!this.rotationAngle.IsTransitioning) {
 			Time.timeScale = 0;
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-                Time.timeScale = 1;
+				Time.timeScale = 1;
+				bindRotation(rotationAngle);
                 UpdateListeners();
 			});
 
@@ -50,12 +42,18 @@ public class LevelRotation : MonoBehaviour {
 		if (!this.rotationAngle.IsTransitioning) {
 			Time.timeScale = 0;
 			this.GetComponent<Future>().schedule(rotationDuration, delegate( ) {
-                Time.timeScale = 1;
+				Time.timeScale = 1;
+				bindRotation(rotationAngle);
                 UpdateListeners();
 			});
 
             rotationAngle.GoTo(transform.rotation.eulerAngles.z + rightTurn * sides);
 		}
+	}
+
+	private void bindRotation(TransitionFloat rotation) {
+		transform.rotation = Quaternion.Euler(0, 0, Mathf.RoundToInt(rotation.CurrentValue) % 360);
+		rotationAngle = new TransitionFloat(Mathf.RoundToInt(rotation.CurrentValue) % 360, rotationDuration, TransitionFloat.EASE_IN_OUT);
 	}
 
     private void UpdateListeners()

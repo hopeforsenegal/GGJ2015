@@ -19,23 +19,34 @@ public class GameManager : MonoBehaviour {
 	public GridSnap grid;
 	public Transform orbPrefab;
 	public GUIText scorePrefab;
-	private float scoreSpacing = 0.1f;
 	public Transform currentOrb;
+	private float scoreSpacing = 0.1f;
 	private Dictionary<PlayerController, int> playerScores = new Dictionary<PlayerController,int>();
 	private Dictionary<PlayerController, GUIText> scoreBoard = new Dictionary<PlayerController, GUIText>();
 
+	public float minRotationInterval = 5;
+	public float maxRotationInterval = 20;
+	private float nextRotationTime;
+
 	// Use this for initialization
 	void Start () {
-	
+		spawnOrb();
+		nextRotationTime = Time.time + Random.value * (maxRotationInterval - minRotationInterval) + minRotationInterval;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.RightShift)) {
-			spawnOrb();
-		}
 		foreach (PlayerController playerController in playerScores.Keys) {
 			scoreBoard[playerController].text = playerController.name + ": " + playerScores[playerController];
+		}
+
+		if (Time.time > nextRotationTime) {
+			nextRotationTime = Time.time + Random.value * (maxRotationInterval - minRotationInterval) + minRotationInterval;
+			if (Random.value < 0.5) {
+				FindObjectOfType<LevelRotation>().RotateLeft(Random.Range(1, 3));
+			} else {
+				FindObjectOfType<LevelRotation>().RotateRight(Random.Range(1, 3));
+			}
 		}
 	}
 
