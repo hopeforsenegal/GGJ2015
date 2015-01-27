@@ -43,7 +43,7 @@ public class DirectionalPlatform : MonoBehaviour {
         }
 
         SpriteRenderer current = GetComponent<SpriteRenderer>();
-        current.color = new Color(current.color.r, current.color.g, current.color.b, isActive ? 1.0f : 0.5f);
+        current.color = new Color(current.color.r, current.color.g, current.color.b, isActive ? 0.85f : 0.1f);
         GetComponent<Collider2D>().enabled = isActive;
     }
 
@@ -53,7 +53,7 @@ public class DirectionalPlatform : MonoBehaviour {
 
         isActive = !isActive;
 
-        current.color = new Color(current.color.r, current.color.g, current.color.b, isActive ? 1.0f : 0.5f);
+        current.color = new Color(current.color.r, current.color.g, current.color.b, isActive ? 0.85f : 0.1f);
         GetComponent<Collider2D>().enabled = isActive;
     }
 
